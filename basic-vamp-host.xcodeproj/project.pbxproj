@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A0BB25441CE5BBA000916B0B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0BB25431CE5BBA000916B0B /* main.cpp */; };
+		A0BB25521CE5C27500916B0B /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BB25511CE5C27500916B0B /* libsndfile.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		A0DFB5321CE5CA97009BE762 /* libvamp-hostsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DFB5311CE5CA97009BE762 /* libvamp-hostsdk.a */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		A0BB25401CE5BBA000916B0B /* basic-vamp-host */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "basic-vamp-host"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0BB25431CE5BBA000916B0B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		A0BB254A1CE5BBEE00916B0B /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
+		A0BB254C1CE5BBEE00916B0B /* vamp-simple-host.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "vamp-simple-host.cpp"; sourceTree = "<group>"; };
+		A0BB25511CE5C27500916B0B /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsndfile.a; path = ../../../../../usr/local/Cellar/libsndfile/1.0.25/lib/libsndfile.a; sourceTree = "<group>"; };
+		A0DFB5311CE5CA97009BE762 /* libvamp-hostsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libvamp-hostsdk.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +38,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0DFB5321CE5CA97009BE762 /* libvamp-hostsdk.a in Frameworks */,
+				A0BB25521CE5C27500916B0B /* libsndfile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +49,8 @@
 		A0BB25371CE5BB9F00916B0B = {
 			isa = PBXGroup;
 			children = (
+				A0DFB5311CE5CA97009BE762 /* libvamp-hostsdk.a */,
+				A0BB25511CE5C27500916B0B /* libsndfile.a */,
 				A0BB25421CE5BBA000916B0B /* basic-vamp-host */,
 				A0BB25411CE5BBA000916B0B /* Products */,
 			);
@@ -57,6 +67,8 @@
 		A0BB25421CE5BBA000916B0B /* basic-vamp-host */ = {
 			isa = PBXGroup;
 			children = (
+				A0BB254A1CE5BBEE00916B0B /* system.h */,
+				A0BB254C1CE5BBEE00916B0B /* vamp-simple-host.cpp */,
 				A0BB25431CE5BBA000916B0B /* main.cpp */,
 			);
 			path = "basic-vamp-host";
@@ -129,6 +141,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -160,10 +173,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"/Users/lucas/code/libraries/vamp-plugin-sdk-2.6",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "/Users/lucas/code/libraries/vamp-plugin-sdk-2.6";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -171,6 +191,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -196,6 +217,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"/Users/lucas/code/libraries/vamp-plugin-sdk-2.6",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "/Users/lucas/code/libraries/vamp-plugin-sdk-2.6";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -205,6 +232,18 @@
 		A0BB25481CE5BBA000916B0B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/lucas/code/libraries/vamp-plugin-sdk-2.6",
+					/usr/local/include,
+				);
+				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/libsndfile/1.0.25/lib,
+					"$(PROJECT_DIR)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -212,6 +251,18 @@
 		A0BB25491CE5BBA000916B0B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/lucas/code/libraries/vamp-plugin-sdk-2.6",
+					/usr/local/include,
+				);
+				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/libsndfile/1.0.25/lib,
+					"$(PROJECT_DIR)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -235,6 +286,7 @@
 				A0BB25491CE5BBA000916B0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
