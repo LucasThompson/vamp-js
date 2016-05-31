@@ -7,12 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A04647FD1CEDC5BE007CBCEA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04647FC1CEDC5BE007CBCEA /* main.cpp */; };
+		A04648061CEDCD85007CBCEA /* SndFileAudioStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04648041CEDCD85007CBCEA /* SndFileAudioStream.cpp */; settings = {ASSET_TAGS = (); }; };
+		A04648091CEDEF7F007CBCEA /* testSndFileAudioStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04648081CEDEF7F007CBCEA /* testSndFileAudioStream.cpp */; settings = {ASSET_TAGS = (); }; };
+		A046480A1CEDF03F007CBCEA /* SndFileAudioStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04648041CEDCD85007CBCEA /* SndFileAudioStream.cpp */; settings = {ASSET_TAGS = (); }; };
+		A046480B1CEDF076007CBCEA /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BB25511CE5C27500916B0B /* libsndfile.a */; };
+		A054A92A1CEE2F1F0013C788 /* SimpleFeatureSetFormatter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A054A9281CEE2F1F0013C788 /* SimpleFeatureSetFormatter.cpp */; settings = {ASSET_TAGS = (); }; };
+		A07C541E1CF0DBF700DD1DD4 /* testMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A07C541D1CF0DBF700DD1DD4 /* testMap.cpp */; settings = {ASSET_TAGS = (); }; };
+		A0B932121CE8DD8B0013CBD9 /* PowerSpectrum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0B932101CE8DD8B0013CBD9 /* PowerSpectrum.cpp */; settings = {ASSET_TAGS = (); }; };
+		A0B9321D1CE8F3A90013CBD9 /* ZeroCrossing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0B9321B1CE8F3A90013CBD9 /* ZeroCrossing.cpp */; settings = {ASSET_TAGS = (); }; };
+		A0B932201CE982EE0013CBD9 /* VampHost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0B9321E1CE982EE0013CBD9 /* VampHost.cpp */; settings = {ASSET_TAGS = (); }; };
 		A0BB25441CE5BBA000916B0B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0BB25431CE5BBA000916B0B /* main.cpp */; };
 		A0BB25521CE5C27500916B0B /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BB25511CE5C27500916B0B /* libsndfile.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		A0DFB5321CE5CA97009BE762 /* libvamp-hostsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DFB5311CE5CA97009BE762 /* libvamp-hostsdk.a */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A04647F81CEDC5BE007CBCEA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		A0BB253E1CE5BB9F00916B0B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -25,15 +44,38 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A04647F51CEDA84A007CBCEA /* AudioStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStream.h; sourceTree = "<group>"; };
+		A04647FA1CEDC5BE007CBCEA /* TestVampHost */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestVampHost; sourceTree = BUILT_PRODUCTS_DIR; };
+		A04647FC1CEDC5BE007CBCEA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		A04648011CEDC5FA007CBCEA /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
+		A04648041CEDCD85007CBCEA /* SndFileAudioStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SndFileAudioStream.cpp; sourceTree = "<group>"; };
+		A04648051CEDCD85007CBCEA /* SndFileAudioStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SndFileAudioStream.h; sourceTree = "<group>"; };
+		A04648071CEDD961007CBCEA /* FeatureSetFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeatureSetFormatter.h; sourceTree = "<group>"; };
+		A04648081CEDEF7F007CBCEA /* testSndFileAudioStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testSndFileAudioStream.cpp; sourceTree = "<group>"; };
+		A054A9281CEE2F1F0013C788 /* SimpleFeatureSetFormatter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleFeatureSetFormatter.cpp; sourceTree = "<group>"; };
+		A054A9291CEE2F1F0013C788 /* SimpleFeatureSetFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFeatureSetFormatter.h; sourceTree = "<group>"; };
+		A07C541D1CF0DBF700DD1DD4 /* testMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testMap.cpp; sourceTree = "<group>"; };
+		A0B932101CE8DD8B0013CBD9 /* PowerSpectrum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PowerSpectrum.cpp; sourceTree = "<group>"; };
+		A0B932111CE8DD8B0013CBD9 /* PowerSpectrum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerSpectrum.h; sourceTree = "<group>"; };
+		A0B9321B1CE8F3A90013CBD9 /* ZeroCrossing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZeroCrossing.cpp; sourceTree = "<group>"; };
+		A0B9321C1CE8F3A90013CBD9 /* ZeroCrossing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZeroCrossing.h; sourceTree = "<group>"; };
+		A0B9321E1CE982EE0013CBD9 /* VampHost.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VampHost.cpp; sourceTree = "<group>"; };
+		A0B9321F1CE982EE0013CBD9 /* VampHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VampHost.h; sourceTree = "<group>"; };
 		A0BB25401CE5BBA000916B0B /* basic-vamp-host */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "basic-vamp-host"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0BB25431CE5BBA000916B0B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		A0BB254A1CE5BBEE00916B0B /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
-		A0BB254C1CE5BBEE00916B0B /* vamp-simple-host.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "vamp-simple-host.cpp"; sourceTree = "<group>"; };
 		A0BB25511CE5C27500916B0B /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsndfile.a; path = ../../../../../usr/local/Cellar/libsndfile/1.0.25/lib/libsndfile.a; sourceTree = "<group>"; };
 		A0DFB5311CE5CA97009BE762 /* libvamp-hostsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libvamp-hostsdk.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A04647F71CEDC5BE007CBCEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A046480B1CEDF076007CBCEA /* libsndfile.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A0BB253D1CE5BB9F00916B0B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -46,12 +88,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A04647FB1CEDC5BE007CBCEA /* TestVampHost */ = {
+			isa = PBXGroup;
+			children = (
+				A04647FC1CEDC5BE007CBCEA /* main.cpp */,
+				A04648011CEDC5FA007CBCEA /* catch.hpp */,
+				A04648081CEDEF7F007CBCEA /* testSndFileAudioStream.cpp */,
+				A07C541D1CF0DBF700DD1DD4 /* testMap.cpp */,
+			);
+			path = TestVampHost;
+			sourceTree = "<group>";
+		};
 		A0BB25371CE5BB9F00916B0B = {
 			isa = PBXGroup;
 			children = (
 				A0DFB5311CE5CA97009BE762 /* libvamp-hostsdk.a */,
 				A0BB25511CE5C27500916B0B /* libsndfile.a */,
 				A0BB25421CE5BBA000916B0B /* basic-vamp-host */,
+				A04647FB1CEDC5BE007CBCEA /* TestVampHost */,
 				A0BB25411CE5BBA000916B0B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				A0BB25401CE5BBA000916B0B /* basic-vamp-host */,
+				A04647FA1CEDC5BE007CBCEA /* TestVampHost */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,9 +122,19 @@
 		A0BB25421CE5BBA000916B0B /* basic-vamp-host */ = {
 			isa = PBXGroup;
 			children = (
-				A0BB254A1CE5BBEE00916B0B /* system.h */,
-				A0BB254C1CE5BBEE00916B0B /* vamp-simple-host.cpp */,
+				A0B932101CE8DD8B0013CBD9 /* PowerSpectrum.cpp */,
+				A0B9321B1CE8F3A90013CBD9 /* ZeroCrossing.cpp */,
+				A0B9321C1CE8F3A90013CBD9 /* ZeroCrossing.h */,
+				A0B932111CE8DD8B0013CBD9 /* PowerSpectrum.h */,
 				A0BB25431CE5BBA000916B0B /* main.cpp */,
+				A0B9321E1CE982EE0013CBD9 /* VampHost.cpp */,
+				A0B9321F1CE982EE0013CBD9 /* VampHost.h */,
+				A04647F51CEDA84A007CBCEA /* AudioStream.h */,
+				A04648041CEDCD85007CBCEA /* SndFileAudioStream.cpp */,
+				A04648051CEDCD85007CBCEA /* SndFileAudioStream.h */,
+				A04648071CEDD961007CBCEA /* FeatureSetFormatter.h */,
+				A054A9281CEE2F1F0013C788 /* SimpleFeatureSetFormatter.cpp */,
+				A054A9291CEE2F1F0013C788 /* SimpleFeatureSetFormatter.h */,
 			);
 			path = "basic-vamp-host";
 			sourceTree = "<group>";
@@ -77,6 +142,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A04647F91CEDC5BE007CBCEA /* TestVampHost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A04647FE1CEDC5BE007CBCEA /* Build configuration list for PBXNativeTarget "TestVampHost" */;
+			buildPhases = (
+				A04647F61CEDC5BE007CBCEA /* Sources */,
+				A04647F71CEDC5BE007CBCEA /* Frameworks */,
+				A04647F81CEDC5BE007CBCEA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestVampHost;
+			productName = TestVampHost;
+			productReference = A04647FA1CEDC5BE007CBCEA /* TestVampHost */;
+			productType = "com.apple.product-type.tool";
+		};
 		A0BB253F1CE5BB9F00916B0B /* basic-vamp-host */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0BB25471CE5BBA000916B0B /* Build configuration list for PBXNativeTarget "basic-vamp-host" */;
@@ -103,6 +185,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = LTDSP;
 				TargetAttributes = {
+					A04647F91CEDC5BE007CBCEA = {
+						CreatedOnToolsVersion = 7.0;
+					};
 					A0BB253F1CE5BB9F00916B0B = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -121,22 +206,61 @@
 			projectRoot = "";
 			targets = (
 				A0BB253F1CE5BB9F00916B0B /* basic-vamp-host */,
+				A04647F91CEDC5BE007CBCEA /* TestVampHost */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A04647F61CEDC5BE007CBCEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A04648091CEDEF7F007CBCEA /* testSndFileAudioStream.cpp in Sources */,
+				A07C541E1CF0DBF700DD1DD4 /* testMap.cpp in Sources */,
+				A04647FD1CEDC5BE007CBCEA /* main.cpp in Sources */,
+				A046480A1CEDF03F007CBCEA /* SndFileAudioStream.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A0BB253C1CE5BB9F00916B0B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A054A92A1CEE2F1F0013C788 /* SimpleFeatureSetFormatter.cpp in Sources */,
+				A0B932121CE8DD8B0013CBD9 /* PowerSpectrum.cpp in Sources */,
 				A0BB25441CE5BBA000916B0B /* main.cpp in Sources */,
+				A0B9321D1CE8F3A90013CBD9 /* ZeroCrossing.cpp in Sources */,
+				A04648061CEDCD85007CBCEA /* SndFileAudioStream.cpp in Sources */,
+				A0B932201CE982EE0013CBD9 /* VampHost.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		A04647FF1CEDC5BE007CBCEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/libsndfile/1.0.25/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A04648001CEDC5BE007CBCEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/libsndfile/1.0.25/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		A0BB25451CE5BBA000916B0B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -270,6 +394,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A04647FE1CEDC5BE007CBCEA /* Build configuration list for PBXNativeTarget "TestVampHost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A04647FF1CEDC5BE007CBCEA /* Debug */,
+				A04648001CEDC5BE007CBCEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A0BB253B1CE5BB9F00916B0B /* Build configuration list for PBXProject "basic-vamp-host" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
