@@ -6,7 +6,7 @@
     An API for audio analysis and feature extraction plugins.
 
     Centre for Digital Music, Queen Mary, University of London.
-    Copyright 2006 Chris Cannam.
+    Copyright 2006-2009 Chris Cannam and QMUL.
   
     Permission is hereby granted, free of charge, to any person
     obtaining a copy of this software and associated documentation
@@ -34,24 +34,20 @@
     authorization.
 */
 
-#ifndef _POWER_SPECTRUM_PLUGIN_H_
-#define _POWER_SPECTRUM_PLUGIN_H_
+#ifndef _FIXED_TEMPO_ESTIMATOR_PLUGIN_H_
+#define _FIXED_TEMPO_ESTIMATOR_PLUGIN_H_
 
 #include <vamp-hostsdk/Plugin.h>
 
 /**
- * Example plugin that returns a power spectrum calculated (trivially)
- * from the frequency domain representation of each block of audio.
- * This is one of the simplest possible Vamp plugins, included as an
- * example of how to return the appropriate value structure for this
- * sort of visualisation.
+ * Example plugin that estimates the tempo of a short fixed-tempo sample.
  */
 
-class PowerSpectrum : public Vamp::Plugin
+class FixedTempoEstimator : public Vamp::Plugin
 {
 public:
-    PowerSpectrum(float inputSampleRate);
-    virtual ~PowerSpectrum();
+    FixedTempoEstimator(float inputSampleRate);
+    virtual ~FixedTempoEstimator();
 
     bool initialise(size_t channels, size_t stepSize, size_t blockSize);
     void reset();
@@ -64,8 +60,13 @@ public:
     std::string getMaker() const;
     int getPluginVersion() const;
     std::string getCopyright() const;
-    size_t getPreferredStepSize() const { return 512; }
-    size_t getPreferredBlockSize() const { return 1024; }
+
+    size_t getPreferredStepSize() const;
+    size_t getPreferredBlockSize() const;
+
+    ParameterList getParameterDescriptors() const;
+    float getParameter(std::string id) const;
+    void setParameter(std::string id, float value);
 
     OutputList getOutputDescriptors() const;
 
@@ -75,7 +76,8 @@ public:
     FeatureSet getRemainingFeatures();
 
 protected:
-    size_t m_blockSize;
+    class D;
+    D *m_d;
 };
 
 
