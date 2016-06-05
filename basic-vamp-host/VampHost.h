@@ -18,7 +18,7 @@ class VampHost
 public:
     VampHost(std::unique_ptr<Vamp::Plugin> plugin);
     ~VampHost() = default;
-    void run(std::unique_ptr<AudioStream> stream, std::unique_ptr<FeatureSetFormatter> formatter);
+    std::string run(std::unique_ptr<AudioStream> stream, std::unique_ptr<FeatureSetFormatter> formatter);
     
 private:
     std::unique_ptr<Vamp::Plugin> mPlugin;

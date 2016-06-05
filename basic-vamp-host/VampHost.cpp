@@ -11,6 +11,7 @@
 #include <vamp-hostsdk/PluginInputDomainAdapter.h>
 #include <vamp-hostsdk/PluginChannelAdapter.h>
 #include <algorithm>
+#include <sstream>
 
 using Vamp::HostExt::PluginChannelAdapter;
 using Vamp::HostExt::PluginWrapper;
@@ -35,11 +36,13 @@ void VampHost::initBufferSizes()
     if (mStepSize > mBlockSize) mBlockSize = isFrequencyDomainPlugin() ? mStepSize * 2.0 : mStepSize;
 }
 
-void VampHost::run(std::unique_ptr<AudioStream> stream, std::unique_ptr<FeatureSetFormatter> formatter)
+std::string VampHost::run(std::unique_ptr<AudioStream> stream, std::unique_ptr<FeatureSetFormatter> formatter)
 {
+    std::stringstream output;
+    
     const int channels = stream->getChannelCount();
     if (!mPlugin->initialise(channels, mStepSize, mBlockSize)) {
-        return; // error
+        return ""; // error
     }
     
     stream->initStreamBuffer(static_cast<int>(mBlockSize));
@@ -67,34 +70,34 @@ void VampHost::run(std::unique_ptr<AudioStream> stream, std::unique_ptr<FeatureS
         
         if ((mBlockSize == mStepSize) || (currentStep == 0)) {
             if ((count = stream->readBlock(static_cast<int>(mBlockSize))) < 0) {
-                return; // error
+                return ""; // error
             }
             if (count != mBlockSize) --finalStepsRemaining;
         } else {
-            stream->shuntBlockBy(static_cast<int>(mStepSize), static_cast<int>(overlapSize));
             if ((count = stream->readBlock(static_cast<int>(mStepSize),  static_cast<int>(overlapSize))) < 0) {
-                return; // error
+                return ""; // error
             }
             if (count != mStepSize) --finalStepsRemaining;
             count += overlapSize;
         }
         
-        for (int c = 0, n = 0; c < channels; ++c, n = 0) {
-            std::transform(pluginBuffer[c], pluginBuffer[c] + count, pluginBuffer[c], [&](const float&) {
-                return stream->getSample(n++, c);
-            });
+        for (int c = 0; c < channels; ++c) {
+            for (int n = 0; n < count; ++n) {
+                pluginBuffer[c][n] = stream->getSample(n, c);
+            }
             std::fill(pluginBuffer[c] + count, pluginBuffer[c] + mBlockSize, 0.0f);
         }
         
         rt = Vamp::RealTime::frame2RealTime(currentStep * mStepSize, stream->getSampleRate());
         long frame = Vamp::RealTime::realTime2Frame(rt + adjustment, stream->getSampleRate());
         
-        std::cout << formatter->format(frame, mPlugin->process(pluginBuffer, rt), stream->getSampleRate());
+        output << formatter->format(frame, mPlugin->process(pluginBuffer, rt), stream->getSampleRate());
         ++currentStep;
         
     } while (finalStepsRemaining > 0);
     
     rt = Vamp::RealTime::frame2RealTime(currentStep * mStepSize, stream->getSampleRate());
     long frame = Vamp::RealTime::realTime2Frame(rt + adjustment, stream->getSampleRate());
-    std::cout << formatter->format(frame, mPlugin->getRemainingFeatures(), stream->getSampleRate());
+    output << formatter->format(frame, mPlugin->getRemainingFeatures(), stream->getSampleRate());
+    return output.str();
 }

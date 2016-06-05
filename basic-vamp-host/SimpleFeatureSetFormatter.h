@@ -14,8 +14,11 @@
 class SimpleFeatureSetFormatter : public FeatureSetFormatter
 {
 public:
-    SimpleFeatureSetFormatter() = default;
-    std::string format(long frame, Vamp::Plugin::FeatureSet features, float sampleRate);
+    SimpleFeatureSetFormatter();
+    SimpleFeatureSetFormatter(int outputNumber);
+    std::string format(long frame, Vamp::Plugin::FeatureSet features, float sampleRate) override;
+private:
+    int mOutputNumber;
 };
 
 #endif /* SimpleFeatureSetFormatter_hpp */
