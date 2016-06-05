@@ -17,8 +17,8 @@ public:
     virtual int getChannelCount() = 0;
     virtual float getSampleRate() = 0;
     virtual int readBlock(int blockSize, int readPointer=0) = 0;
-    virtual void shuntBlockBy(int readPointer, int nSamples) = 0;
     virtual float getSample(int n, int channel) = 0;
+    virtual void setSample(int n, int channel, float sample) = 0;
 };
 
 

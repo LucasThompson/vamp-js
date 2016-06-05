@@ -16,7 +16,7 @@ SndFileAudioStream::SndFileAudioStream(std::string filePath)
 
 void SndFileAudioStream::initStreamBuffer(int blockSize)
 {
-    mFileBuffer = new float[blockSize * getChannelCount()];
+    mFileBuffer = std::unique_ptr<float>{new float[blockSize * getChannelCount()]};
 }
 
 SndFileAudioStream::~SndFileAudioStream()
@@ -31,17 +31,26 @@ int SndFileAudioStream::getChannelCount()
 
 int SndFileAudioStream::readBlock(int blockSize, int readPointer)
 {
-    return static_cast<int>(sf_readf_float(mFile, mFileBuffer + (readPointer * getChannelCount()), blockSize));
-}
-
-void SndFileAudioStream::shuntBlockBy(int readPointer, int nSamples)
-{
-    memmove(mFileBuffer, mFileBuffer + (readPointer * getChannelCount()), nSamples * getChannelCount() * sizeof(float));
+    if (readPointer > 0) {
+        memmove(mFileBuffer.get(), mFileBuffer.get() + (blockSize * getChannelCount()), readPointer * getChannelCount() * sizeof(float));
+    }
+    int count = static_cast<int>(sf_readf_float(mFile, mFileBuffer.get() + (readPointer * getChannelCount()), blockSize));
+    if (count < blockSize) {
+        std::fill(mFileBuffer.get() + count + (readPointer * getChannelCount()),
+                  mFileBuffer.get() + (blockSize - count) * getChannelCount(),
+                  0.0f);
+    }
+    return count;
 }
 
 float SndFileAudioStream::getSample(int n, int channel)
 {
-    return mFileBuffer[n * getChannelCount() + channel];
+    return mFileBuffer.get()[n * getChannelCount() + channel];
+}
+
+void SndFileAudioStream::setSample(int n, int channel, float sample)
+{
+    mFileBuffer.get()[n * getChannelCount() + channel] = sample;
 }
 
 float SndFileAudioStream::getSampleRate()

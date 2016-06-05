@@ -22,12 +22,12 @@ public:
     int getChannelCount() override;
     float getSampleRate() override;
     int readBlock(int blockSize, int readPointer) override;
-    void shuntBlockBy(int readPointer, int nSamples) override;
     float getSample(int n, int channel) override;
+    void setSample(int n, int channel, float sample) override;
 private:
     SNDFILE* mFile;
     SF_INFO mInfo;
-    float* mFileBuffer;
+    std::unique_ptr<float> mFileBuffer;
 };
 
 #endif /* SndFileAudioStream_hpp */
