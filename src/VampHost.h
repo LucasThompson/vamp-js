@@ -12,6 +12,7 @@
 #include <vamp-hostsdk/Plugin.h>
 #include "AudioStream.h"
 #include "FeatureSetFormatter.h"
+#include <memory>
 
 class VampHost
 {

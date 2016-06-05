@@ -9,6 +9,7 @@
 #include "TestUtilities.h"
 #include <cmath>
 #include <numeric>
+#include <algorithm>
 
 std::vector<float> TestUtilities::generateSineWave(float frequency, float lengthSeconds, float sampleRate, float amplitude)
 {

@@ -12,6 +12,7 @@
 #include "AudioStream.h"
 #include <string>
 #include <sndfile.h>
+#include <memory>
 
 class SndFileAudioStream : public AudioStream
 {
