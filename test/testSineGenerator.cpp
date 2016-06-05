@@ -7,7 +7,7 @@
 //
 
 #include "catch.hpp"
-#include "fixture_expected_sin.h"
+#include "fixtures/expected_sin.h"
 #include "TestUtilities.h"
 
 

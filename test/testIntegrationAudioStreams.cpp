@@ -7,9 +7,9 @@
 //
 
 #include "catch.hpp"
-#include "fixture_expected_zc.h"
-#include "fixture_expected_ps.h"
-#include "fixture_expected_tempo.h"
+#include "fixtures/expected_zc.h"
+#include "fixtures/expected_ps.h"
+#include "fixtures/expected_tempo.h"
 #include "VampHost.h"
 #include "ZeroCrossing.h"
 #include "PowerSpectrum.h"
