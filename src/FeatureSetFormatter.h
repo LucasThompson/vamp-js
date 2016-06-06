@@ -16,7 +16,8 @@ class FeatureSetFormatter
 {
 public:
     virtual ~FeatureSetFormatter() = default;
-    virtual std::string format(long frame, Vamp::Plugin::FeatureSet features, float sampleRate) = 0;
+    virtual std::string formatFeature(long frame, Vamp::Plugin::FeatureSet features, float sampleRate) = 0;
+    virtual std::string formatRemainingFeatures(long frame, Vamp::Plugin::FeatureSet features, float sampleRate) = 0;
 };
 
 

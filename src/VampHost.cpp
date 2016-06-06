@@ -91,13 +91,13 @@ std::string VampHost::run(std::unique_ptr<AudioStream> stream, std::unique_ptr<F
         rt = Vamp::RealTime::frame2RealTime(currentStep * mStepSize, stream->getSampleRate());
         long frame = Vamp::RealTime::realTime2Frame(rt + adjustment, stream->getSampleRate());
         
-        output << formatter->format(frame, mPlugin->process(pluginBuffer, rt), stream->getSampleRate());
+        output << formatter->formatFeature(frame, mPlugin->process(pluginBuffer, rt), stream->getSampleRate());
         ++currentStep;
         
     } while (finalStepsRemaining > 0);
     
     rt = Vamp::RealTime::frame2RealTime(currentStep * mStepSize, stream->getSampleRate());
     long frame = Vamp::RealTime::realTime2Frame(rt + adjustment, stream->getSampleRate());
-    output << formatter->format(frame, mPlugin->getRemainingFeatures(), stream->getSampleRate());
+    output << formatter->formatRemainingFeatures(frame, mPlugin->getRemainingFeatures(), stream->getSampleRate());
     return output.str();
 }
