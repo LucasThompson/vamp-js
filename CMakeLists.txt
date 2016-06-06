@@ -11,4 +11,9 @@ set(VAMP_HOST_SDK emscripten/ext/src/vamp-hostsdk/RealTime.cpp emscripten/ext/sr
 set(VAMP_PLUGINS emscripten/plugins/ZeroCrossing.cpp emscripten/plugins/PowerSpectrum.cpp emscripten/plugins/FixedTempoEstimator.cpp)
 add_executable(TestVampJs ${TEST_FILES} ${SOURCE_FILES} ${TEST_UTILS} ${VAMP_PLUGINS} ${VAMP_SDK} ${VAMP_HOST_SDK})
 
-add_custom_command(TARGET TestVampJs COMMAND TestVampJs -r console -d yes -s)
+if(DEFINED ENV{CI})
+  add_custom_command(TARGET TestVampJs COMMAND TestVampJs -r junit)
+else()
+  add_custom_command(TARGET TestVampJs COMMAND TestVampJs -r console -d yes -s)
+endif()
+
