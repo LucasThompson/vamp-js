@@ -16,7 +16,7 @@ var play = document.querySelector('.play');
 function getData() {
   request = new XMLHttpRequest();
 
-  request.open('GET', 'viper.ogg', true);
+  request.open('GET', 'drums.ogg', true);
 
   request.responseType = 'arraybuffer';
 
@@ -44,11 +44,27 @@ function getData() {
             } 
         }
         //
-        var host = new Module.VampHost(Module.createPYin(renderedBuffer.sampleRate));
-        console.log(host.run(as, Module.createSimpleFeatureSetFormatter(5)));
-        
+        var host = new Module.VampHost(Module.createZeroCrossing(renderedBuffer.sampleRate));
+        var feature = JSON.parse(host.run(as, Module.createJsonFeatureSetFormatter(0)));
+        var MGJson = [];
+        for (var i=0; i < feature.feature[0].data[0].time.length; ++i) {
+            MGJson.push({'time': feature.feature[0].data[0].time[i], 'feature': feature.feature[0].data[0].value[i][0]});
+        }
         // clean up emscripten objects
         host.delete(); 
+
+        MG.data_graphic({
+          title: "Zero Crossings",
+          description: "Zero Crossing Counts",
+          data: MGJson,
+          width: 1024,
+          height: 600,
+          target: ".result",
+          x_accessor: "time",
+          y_accessor: "feature",
+          interpolate: "monotone",
+          area: false
+        });
         
         console.log('Vamp stuff done..');
         document.querySelector('#status').innerHTML = 'Vamp stuff done..'
