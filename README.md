@@ -32,4 +32,4 @@ To build the emscripten javascript module, you need em++ in your PATH. Then exec
 
 ## Notes
 
-Performance is best in Firefox, due to its special treatment of asm.js. It is worth noting that the VAMP plugins which do work in the frequency are quite slow. The VAMP SDK uses the publicly available Dan Cross FFT implementation, and as noted in Chris Cannam's [blog post](https://thebreakfastpost.com/2015/10/18/ffts-in-javascript/) about compiling FFT libraries to Javascript, Kiss FFT is significantly faster. So I'll explore swapping that into the Vamp SDK.
+Performance is best in Firefox, due to its special treatment of asm.js. It is worth noting that the VAMP plugins which do work in the frequency domain are quite slow. The Vamp SDK uses the publicly available Don Cross FFT implementation, and as noted in Chris Cannam's [blog post](https://thebreakfastpost.com/2015/10/18/ffts-in-javascript/) about compiling FFT libraries to Javascript, Kiss FFT is significantly faster. So I'll explore swapping that into the Vamp SDK at a later date.
