@@ -14,6 +14,7 @@
 #include "../src/RawDataAudioStream.h"
 #include "../src/FeatureSetFormatter.h"
 #include "../src/SimpleFeatureSetFormatter.h"
+#include "../src/JsonFeatureSetFormatter.h"
 #include "../src/VampHost.h"
 #include "./plugins/ZeroCrossing.h"
 #include "./plugins/PowerSpectrum.h"
@@ -38,8 +39,11 @@ EMSCRIPTEN_BINDINGS(vamp_js)
     emscripten::class_<RawDataAudioStream, emscripten::base<AudioStream>>("RawDataAudioStream")
         .constructor<int, float, float>();
     emscripten::class_<FeatureSetFormatter>("FeatureSetFormatter")
-        .function("format", &FeatureSetFormatter::format);
+        .function("formatFeature", &FeatureSetFormatter::formatFeature)
+        .function("formatRemainingFeatures", &FeatureSetFormatter::formatRemainingFeatures);
     emscripten::class_<SimpleFeatureSetFormatter, emscripten::base<FeatureSetFormatter>>("SimpleFeatureSetFormatter")
+        .constructor<>();
+    emscripten::class_<JsonFeatureSetFormatter, emscripten::base<FeatureSetFormatter>>("JsonFeatureSetFormatter")
         .constructor<>();
     emscripten::class_<VampHost>("VampHost")
         .constructor<>(&createHost)
@@ -59,6 +63,7 @@ EMSCRIPTEN_BINDINGS(vamp_js)
     emscripten::function("createFixedTempoEstimator", &createUniquePtr<Vamp::Plugin, FixedTempoEstimator, float>);
     emscripten::function("createRawDataAudioStream", &createUniquePtr<AudioStream, RawDataAudioStream, int, float, float>);
     emscripten::function("createSimpleFeatureSetFormatter", &createUniquePtr<FeatureSetFormatter, SimpleFeatureSetFormatter, int>);
+    emscripten::function("createJsonFeatureSetFormatter", &createUniquePtr<FeatureSetFormatter, JsonFeatureSetFormatter, int>);
 }
 
 #endif /* host_bindings_h */
