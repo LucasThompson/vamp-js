@@ -16,7 +16,7 @@ An example application can be found [here](http://lucasthompson.github.io/vamp-j
 
 ## Build
 
-To build the C++ tests, you will need the meta build system cmake install. 
+To build the C++ tests, you will need the meta build system cmake. 
 
 Execute the build shell script in the root directory of the repo, this builds and runs the test suite:
 
@@ -32,4 +32,4 @@ To build the emscripten javascript module, you need em++ in your PATH. Then exec
 
 ## Notes
 
-Performance is best in Firefox, due to its special treatment of asm.js. It is worth noting that the VAMP plugins which do work in the frequency domain are quite slow. The Vamp SDK uses the publicly available Don Cross FFT implementation, and as noted in Chris Cannam's [blog post](https://thebreakfastpost.com/2015/10/18/ffts-in-javascript/) about compiling FFT libraries to Javascript, Kiss FFT is significantly faster. So I'll explore swapping that into the Vamp SDK at a later date.
+Performance is best in Firefox, due to its superior asm.js optimizations. It is worth noting that the VAMP plugins which do work in the frequency domain are quite slow. The Vamp SDK uses the publicly available Don Cross FFT implementation, and as noted in Chris Cannam's [blog post](https://thebreakfastpost.com/2015/10/18/ffts-in-javascript/) about compiling FFT libraries to Javascript, Kiss FFT is significantly faster. So I'll explore swapping that into the Vamp SDK at a later date.
