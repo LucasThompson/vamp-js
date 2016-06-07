@@ -1,6 +1,7 @@
 // define online and offline audio context
-
-var audioCtx = new AudioContext();
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+var OfflineAudioContext = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+var audioCtx = new AudioContext() ;
 var offlineCtx = new OfflineAudioContext(2, 44100 * 15, 44100);
 
 source = offlineCtx.createBufferSource();
