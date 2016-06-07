@@ -18,8 +18,8 @@ class JsonFeatureSetFormatter : public FeatureSetFormatter
 public:
     JsonFeatureSetFormatter();
     JsonFeatureSetFormatter(int outputNumber);
-    std::string formatFeature(long frame, Vamp::Plugin::FeatureSet features, float sampleRate) override;
-    std::string formatRemainingFeatures(long frame, Vamp::Plugin::FeatureSet features, float sampleRate) override;
+    std::string formatFeature(long frame, const Vamp::Plugin::FeatureSet& features, float sampleRate) override;
+    std::string formatRemainingFeatures(long frame, const Vamp::Plugin::FeatureSet& features, float sampleRate) override;
 private:
     int mOutputNumber;
     std::vector<std::vector<float>> mValues;
