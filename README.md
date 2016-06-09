@@ -10,7 +10,7 @@ There is a stripped down version of the simple vamp host from the vamp-hostsdk, 
 
 The approach taken was to expose C++ methods with embind. The use of C++11 smart pointers makes some of the calling code more awkward than it needs to be.
 
-As it stands, the entire audio file is buffered into memory using an OfflineAudioContext from the Web Audio API, and then the VampHost can be called from Javascript to compute the features with the desired plugin. There is an output formatter which produces Javascript objects with a schema similar to JAMS. 
+In this proof of concept implementation, the entire audio file is buffered into memory using the Web Audio API and the sample data is copied to an AudioStream which is passed to the Vamp Host, all from Javascript. Then the host's run method is called from Javascript to compute the features for the desired plugin. There is an output formatter which produces Javascript objects with a schema similar to JAMS. 
 
 An example application can be found [here](http://lucasthompson.github.io/vamp-js/examples/web-audio/). This example uses the ZeroCrossing plugin from the Vamp Plugin SDK examples, and renders a graph using D3.js.
 
@@ -32,4 +32,6 @@ To build the emscripten javascript module, you need em++ in your PATH. Then exec
 
 ## Notes
 
-Performance is best in Firefox, due to its superior asm.js optimizations. It is worth noting that the VAMP plugins which do work in the frequency domain are quite slow. The Vamp SDK uses the publicly available Don Cross FFT implementation, and as noted in Chris Cannam's [blog post](https://thebreakfastpost.com/2015/10/18/ffts-in-javascript/) about compiling FFT libraries to Javascript, Kiss FFT is significantly faster. So I'll explore swapping that into the Vamp SDK at a later date.
+Performance is best in Firefox, due to its superior asm.js optimizations. It is worth noting that the Vamp plugins which do work in the frequency domain are quite slow. The Vamp SDK uses the publicly available Don Cross FFT implementation, and as noted in Chris Cannam's [blog post](https://thebreakfastpost.com/2015/10/18/ffts-in-javascript/) about compiling FFT libraries to Javascript, Kiss FFT is significantly faster. So I'll explore swapping that into the Vamp SDK at a later date.
+
+I'd also like to explore implementing a host entirely in Javascript, using the Web Audio API node graph. 
