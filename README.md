@@ -14,7 +14,7 @@ In this proof of concept implementation, the entire audio file is buffered into 
 
 ### Examples: 
 * [Zero Crossing Counts](http://lucasthompson.github.io/vamp-js/examples/web-audio/zero-crossings.html) - This example uses the ZeroCrossing plugin from the Vamp Plugin SDK examples, and renders a graph using D3.js.
-* [Spectrogram](http://lucasthompson.github.io/vamp-js/examples/web-audio/zero-crossings.html) - This example uses the PowerSpectrum plugin from the Vamp Plugin SDK examples, and renders a simple black and white spectrogram using a HTML5 Canvas Element.
+* [Spectrogram](http://lucasthompson.github.io/vamp-js/examples/web-audio/spectrogram.html) - This example uses the PowerSpectrum plugin from the Vamp Plugin SDK examples, and renders a simple black and white spectrogram using a HTML5 Canvas Element.
 
 ## Build
 
