@@ -24,7 +24,7 @@ function vampExample(audioFileURI, pluginInitCallback, postProcessingCallback) {
           as.setSample(n, c, cBuffer[n]);
         }
       }
-      var host = pluginInitCallback(renderedBuffer.sampleRate);
+      var host = new Module.VampHost(pluginInitCallback(renderedBuffer.sampleRate));
       var feature = JSON.parse(host.run(as, Module.createJsonFeatureSetFormatter(0)));
       host.delete(); // clean up emscripten objects
       document.querySelector('#status').innerHTML = 'Vamp feature extraction done..'

@@ -24,7 +24,7 @@
 <script src="./VampExample.js"></script>
 <script>  
   // Run vampExample to start the process off
-  vampExample('drums.ogg', function (sr) { return new Module.VampHost(Module.createZeroCrossing(sr))}, function(JAMS) {
+  vampExample('drums.ogg', function (sr) { return Module.createZeroCrossing(sr) }, function(JAMS) {
     var MGJson = [];
     for (var i = 0; i < JAMS.time.length; ++i) {
       MGJson.push({

@@ -46,7 +46,7 @@
     ctx.translate(1, 0);
   }
   // Run vampExample to start the process off
-  vampExample('drums.ogg', function (sr) { return new Module.VampHost(Module.createPowerSpectrum(sr))}, function(JAMS) {
+  vampExample('drums.ogg', function (sr) { return Module.createPowerSpectrum(sr) }, function(JAMS) {
     var canvasScale = canvasWidth / JAMS.time.length;
     ctx.scale(canvasScale, 1);
     for (var s = 0; s < JAMS.time.length; ++s) {
