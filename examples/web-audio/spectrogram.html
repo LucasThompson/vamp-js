@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+   <link href='https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
+   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <title>Vamp.js - Spectrogram Example</title>
+</head>
+
+<body>
+  <button class="play">Play</button>
+  <pre id="status"></pre>
+  <canvas id="canvas" width="1024" height="512"></canvas>
+</body>
+<script src="./Vamp.js"></script>
+<script src="./VampExample.js"></script>
+<script>
+  var canvasWidth = parseInt(document.getElementById("canvas").getAttribute("width"));
+  var ctx = document.getElementById("canvas").getContext("2d");
+  
+  function drawSpectrogram(array) {
+    var minDecibels = -100;
+    var maxDecibels = -30;
+    var rangeScaleFactor = 1.0 / (maxDecibels - minDecibels);
+
+    for (var i = 0; i < array.length; i++) {
+      // scale 
+      var value = array[i] / array.length;
+      // re-map range
+      var dbMag = !value ? minDecibels : 20 * Math.log10(value);
+      var scaledValue = 255 * (dbMag - minDecibels) * rangeScaleFactor;
+      // clip to uint8 range
+      if (scaledValue < 0)
+        scaledValue = 0;
+      if (scaledValue > 255)
+        scaledValue = 255;
+      scaledValue = Math.floor(scaledValue);
+      // draw line
+      ctx.fillStyle = 'rgb(c, c, c)'.replace(/c/g, 255 - scaledValue);
+      ctx.fillRect(0, 512 - i, 1, 1);
+    }
+    ctx.translate(1, 0);
+  }
+  // Run vampExample to start the process off
+  vampExample('drums.ogg', function (sr) { return new Module.VampHost(Module.createPowerSpectrum(sr))}, function(JAMS) {
+    var canvasScale = canvasWidth / JAMS.time.length;
+    ctx.scale(canvasScale, 1);
+    for (var s = 0; s < JAMS.time.length; ++s) {
+      drawSpectrogram(JAMS.value[s]);
+    }  
+  });
+</script>
+</html>

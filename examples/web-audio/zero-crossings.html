@@ -9,11 +9,10 @@
    <link href='https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
   <link href='./metricsgraphics.css' rel='stylesheet' type='text/css'>
-  <title>Vamp.js Example</title>
+  <title>Vamp.js - Zero Crossing Example</title>
 </head>
 
 <body>
-
   <button class="play">Play</button>
   <pre id="status"></pre>
   <div class="result"></div>
@@ -23,4 +22,29 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js' charset='utf-8'></script>
 <script src="./metricsgraphics.min.js"></script>
 <script src="./VampExample.js"></script>
+<script>  
+  // Run vampExample to start the process off
+  vampExample('drums.ogg', function (sr) { return new Module.VampHost(Module.createZeroCrossing(sr))}, function(JAMS) {
+    var MGJson = [];
+    for (var i = 0; i < JAMS.time.length; ++i) {
+      MGJson.push({
+        'time': JAMS.time[i],
+        'feature': JAMS.value[i][0]
+      });
+    }
+
+    MG.data_graphic({
+      title: "Zero Crossings",
+      description: "Zero Crossing Counts",
+      data: MGJson,
+      width: 1024,
+      height: 600,
+      target: ".result",
+      x_accessor: "time",
+      y_accessor: "feature",
+      interpolate: "monotone",
+      area: false
+    });       
+  });
+</script>
 </html>

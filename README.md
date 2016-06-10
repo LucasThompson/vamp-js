@@ -12,7 +12,9 @@ The approach taken was to expose C++ methods with embind. The use of C++11 smart
 
 In this proof of concept implementation, the entire audio file is buffered into memory using the Web Audio API and the sample data is copied to an AudioStream which is passed to the Vamp Host, all from Javascript. Then the host's run method is called from Javascript to compute the features for the desired plugin. There is an output formatter which produces Javascript objects with a schema similar to JAMS. 
 
-An example application can be found [here](http://lucasthompson.github.io/vamp-js/examples/web-audio/). This example uses the ZeroCrossing plugin from the Vamp Plugin SDK examples, and renders a graph using D3.js.
+### Examples: 
+* [Zero Crossing Counts](http://lucasthompson.github.io/vamp-js/examples/web-audio/zero-crossings.html) - This example uses the ZeroCrossing plugin from the Vamp Plugin SDK examples, and renders a graph using D3.js.
+* [Spectrogram](http://lucasthompson.github.io/vamp-js/examples/web-audio/zero-crossings.html) - This example uses the PowerSpectrum plugin from the Vamp Plugin SDK examples, and renders a simple black and white spectrogram using a HTML5 Canvas Element.
 
 ## Build
 
