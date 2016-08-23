@@ -26,10 +26,11 @@ Execute the build shell script in the root directory of the repo, this builds an
 ./build.sh
 ```
 
-To build the emscripten javascript module, you need em++ in your PATH. Then execute the shell script in the emscripten directory.
+To build the emscripten javascript module, you need em++ in your PATH. Then run make from the emscripten directory.
 
 ```bash
-./emscripten/build.sh
+cd ./emscripten
+make
 ```
 
 ## Notes
