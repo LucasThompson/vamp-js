@@ -4,12 +4,12 @@ SubModules:
 	if [ -d ./plugins/pyin/.hg ]; then \
 		hg pull -u -R ./plugins/pyin; \
 	else \
-		hg clone https://code.soundsoftware.ac.uk/hg/pyin ./plugins/pyin; \
+		hg clone https://code.soundsoftware.ac.uk/hg/pyin -r vamp-fft-revision ./plugins/pyin; \
 	fi
 	if [ -d ./ext/vamp-plugin-sdk/.hg ]; then \
 		hg pull -u -R ./ext/vamp-plugin-sdk; \
 	else \
-		hg clone https://code.soundsoftware.ac.uk/hg/vamp-plugin-sdk ./ext/vamp-plugin-sdk; \
+		hg clone https://code.soundsoftware.ac.uk/hg/vamp-plugin-sdk -r vampipe ./ext/vamp-plugin-sdk; \
 	fi
 
 Vamp.js:
