@@ -13,7 +13,7 @@ SubModules:
 	fi
 
 Vamp.js:
-	em++ -O3 --bind \
+	em++ -O3 -DSINGLE_PRECISION_FFT --bind \
 	-s ALLOW_MEMORY_GROWTH=1 \
 	--memory-init-file 0 \
 	-I./ext \
