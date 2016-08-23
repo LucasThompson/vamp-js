@@ -41,7 +41,8 @@ std::string JsonFeatureSetFormatter::formatFeature(long frame, const Vamp::Plugi
 std::string JsonFeatureSetFormatter::formatRemainingFeatures(long frame, const Vamp::Plugin::FeatureSet& features, float sampleRate)
 {
     formatFeature(frame, features, sampleRate);
-    Json json = Json::object {
+    Json json = Json::object
+    {
         { "feature", Json::array
             {
                 Json::object
@@ -54,8 +55,10 @@ std::string JsonFeatureSetFormatter::formatRemainingFeatures(long frame, const V
                                 {"time", mTimes}
                             }
                         }
-                    }}
-            }}
+                    }
+                }
+            }
+        }
     };
     return json.dump();
 }
