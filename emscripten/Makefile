@@ -1,22 +1,35 @@
-all: Vamp.js
+all: SubModules Vamp.js
+
+SubModules:
+	if [ -d ./plugins/pyin/.hg ]; then \
+		hg pull -u -R ./plugins/pyin; \
+	else \
+		hg clone https://code.soundsoftware.ac.uk/hg/pyin ./plugins/pyin; \
+	fi
+	if [ -d ./ext/vamp-plugin-sdk/.hg ]; then \
+		hg pull -u -R ./ext/vamp-plugin-sdk; \
+	else \
+		hg clone https://code.soundsoftware.ac.uk/hg/vamp-plugin-sdk ./ext/vamp-plugin-sdk; \
+	fi
 
 Vamp.js:
 	em++ -O3 --bind \
 	-s ALLOW_MEMORY_GROWTH=1 \
 	--memory-init-file 0 \
 	-I./ext \
+	-I./ext/vamp-plugin-sdk \
 	-I/usr/local/include \
 	../src/RawDataAudioStream.cpp \
 	../src/SimpleFeatureSetFormatter.cpp \
 	../src/VampHost.cpp \
 	../src/JsonFeatureSetFormatter.cpp \
-	./ext/src/vamp-sdk/FFT.cpp \
 	./ext/json11.cpp \
-	./ext/src/vamp-sdk/RealTime.cpp \
-	./ext/src/vamp-hostsdk/RealTime.cpp \
-	./ext/src/vamp-hostsdk/PluginChannelAdapter.cpp \
-	./ext/src/vamp-hostsdk/PluginInputDomainAdapter.cpp \
-	./ext/src/vamp-hostsdk/PluginWrapper.cpp \
+	./ext/vamp-plugin-sdk/src/vamp-sdk/FFT.cpp \
+	./ext/vamp-plugin-sdk/src/vamp-sdk/RealTime.cpp \
+	./ext/vamp-plugin-sdk/src/vamp-hostsdk/RealTime.cpp \
+	./ext/vamp-plugin-sdk/src/vamp-hostsdk/PluginChannelAdapter.cpp \
+	./ext/vamp-plugin-sdk/src/vamp-hostsdk/PluginInputDomainAdapter.cpp \
+	./ext/vamp-plugin-sdk/src/vamp-hostsdk/PluginWrapper.cpp \
 	./plugins/ZeroCrossing.cpp \
 	./plugins/PowerSpectrum.cpp \
 	./plugins/FixedTempoEstimator.cpp \
@@ -33,4 +46,4 @@ Vamp.js:
 	-o Vamp.js
 	
 clean:
-	rm -f ./Vamp.js
+	rm -rf ./Vamp.js ./plugins/pyin ./ext/vamp-plugin-sdk
